@@ -1,0 +1,16 @@
+1. Initialize an empty Node.js project:
+    npm init -y
+2. Add dependencies: 
+    npm install prisma typescript
+3. Initialize typescript:
+    npx tsc --init
+    Now goto tsconfig.json->
+    Change `rootDit` to `src`
+    Change `outDir` to `dist`
+4. Initialize a fresh prisma project:
+    npx prisma init
+5. Define schema and Database in schema.prisma
+6. Generate migrations:
+    npx prisma migrate dev --name name_your_migration
+7. Generate clients:
+    npx prisma generate

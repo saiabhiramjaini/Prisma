@@ -1,0 +1,38 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// Defining schema
+model User {
+  id         Int      @id @default(autoincrement())    // @id tells that is a primary key
+  username   String   @unique
+  password   String
+  firstName  String?   // ? depicts that this field is optional
+  lastName   String?   
+  todos      Todo[]
+}
+
+model Todo {
+  id          Int     @id @default(autoincrement())
+  title       String
+  description String?
+  done        Boolean @default(false)
+  userId      Int
+  user        User    @relation(fields: [userId], references: [id])
+}
+
+// @relation: This is a Prisma attribute that defines a relation between models.
+// fields: [userId]: The userId field in the Todo model will hold the id of the associated User.
+// references: [id]: It is referring to the id field of the User model, which is the primary key.
