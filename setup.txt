@@ -1,16 +1,13 @@
-1. Initialize an empty Node.js project:
-    npm init -y
-2. Add dependencies: 
-    npm install prisma typescript
-3. Initialize typescript:
-    npx tsc --init
-    Now goto tsconfig.json->
-    Change `rootDit` to `src`
-    Change `outDir` to `dist`
-4. Initialize a fresh prisma project:
-    npx prisma init
-5. Define schema and Database in schema.prisma
-6. Generate migrations:
-    npx prisma migrate dev --name name_your_migration
-7. Generate clients:
-    npx prisma generate
+1. npm init -y
+2. npm i prisma typescript
+3. npx tsc --init
+    Change `rootDit` to `./src`
+    Change `outDir` to `./dist`
+4. npx prisma init
+5. update prisma/schema.prisma  to setup what database you want to use
+6. define the schema of your data in the prisma/schema.prisma  file
+7. npx prisma migrate dev --name title_for_migration
+8. npx prisma generate
+9. import { PrismaClient } from "@prisma/client";
+   const prisma = new PrismaClient();
+   const user = prisma.user;
